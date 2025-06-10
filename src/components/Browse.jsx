@@ -1,9 +1,11 @@
 import React from 'react'
+import Header from './Header'
 
 const Browse = () => {
   return (
-    <div>nothing is printing whatever i a writing</div>
-    
+    <div>
+      <Header/>
+    </div>
   )
 }
 
