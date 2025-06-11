@@ -1,9 +1,6 @@
 import Login from "./Login";
 import Browse from "./Browse";
-import {
-  createBrowserRouter,
-  RouterProvider
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -28,13 +25,18 @@ const Body = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         //User is signed in
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        navigate("/browse");
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate("/");
       }
     });
   }, []);
