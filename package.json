@@ -12,6 +12,7 @@
   "author": "Amisha Singh",
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.8",
     "daisyui": "^5.0.43",
     "firebase": "^11.9.0",
