@@ -13,12 +13,12 @@ const VideoTitle = ({ title, overview }) => {
       </p>
 
       <div className="flex gap-2 md:gap-4 mt-1">
-        <button className="flex items-center gap-1 bg-white text-black text-sm md:text-base py-1 px-1.5 md:px-1.5 rounded-lg transition duration-300 shadow-md transform hover:scale-102 hover:opacity-50">
+        <button className="flex items-center gap-1 bg-white/80 text-black text-sm md:text-base py-1 px-1.5 md:px-1.5 rounded-lg transition duration-300 shadow-md transform hover:scale-102 hover:opacity-50">
           <PlayIcon className="w-3 h-3 md:w-5 md:h-5" />
           Play
         </button>
 
-        <button className="flex items-center gap-1 bg-gray-700 text-white text-sm md:text-base  py-1 px-1.5 md:px-1.5 rounded-lg transition duration-300 shadow-md transform hover:scale-102 hover:opacity-60">
+        <button className="flex items-center gap-1 bg-gray-800/40 text-white text-sm md:text-base  py-1 px-1.5 md:px-1.5 rounded-lg transition duration-300 shadow-md transform hover:scale-102 hover:opacity-60">
           <InformationCircleIcon className="w-3 h-3 md:w-5 md:h-5" />
           More Info
         </button>
