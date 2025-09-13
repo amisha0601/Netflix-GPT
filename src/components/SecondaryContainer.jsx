@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
+
+  const tvSeries = useSelector((store) => store.tvSeries);
+
   return (
     <div className=" bg-black">
       <div className="-mt-60 pl-6 relative z-20">
@@ -18,12 +21,21 @@ const SecondaryContainer = () => {
           movies={movies.upcomingMovies || []}
         />
         <MovieList
-          title={"Horror Movies"}
-          movies={movies.nowPlayingMovies || []}
+          title={"Airing Today Tv Series"}
+          movies={tvSeries.airingTodayTvSeries || []}
+        />
+          <MovieList
+          title={"On The Air Tv Series"}
+          movies={tvSeries.onTheAirTvSeries || []}
         />
         <MovieList
-          title={"Now Playing"}
-          movies={movies.nowPlayingMovies || []}
+          title={"Popular Tv Series"}
+          movies={tvSeries.popularTvSeries || []}
+        />
+      
+        <MovieList
+          title={"Top Rated Tv Series"}
+          movies={tvSeries.topRatedTvSeries || []}
         />
       </div>
     </div>
