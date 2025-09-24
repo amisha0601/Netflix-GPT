@@ -6,16 +6,18 @@ import {
   signInWithEmailAndPassword,updateProfile
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { USER_AVATAR } from "../utils/constants";
 import { BG_URL } from "../utils/constants";
+import lang from "../utils/languageConstants"
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
 
+  const langKey = useSelector((store) => store.config.lang)
 
   const yourName = useRef(null);
   const email = useRef(null);
@@ -40,7 +42,7 @@ const Login = () => {
             photoURL:USER_AVATAR,
           })
             .then(() => {
-              // Profile updated!
+              // Profile updated
                  const { uid, email, displayName, photoURL } = auth.currentUser;
                       dispatch(
                         addUser({
@@ -96,7 +98,7 @@ const Login = () => {
         className="w-3/12 absolute p-12 bg-black/80 my-36 mx-auto right-0 left-0 text-white rounded-lg"
       >
         <h1 className="font-bold text-3xl py-6">
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
         </h1>
         {!isSignInForm && (
           <input
@@ -109,14 +111,14 @@ const Login = () => {
         <input
           ref={email}
           type="text"
-          placeholder="Email or phone number"
+          placeholder={lang[langKey].emailPlaceholder}
           className="p-3 my-2 w-full bg-gray-700 rounded-lg"
         ></input>
 
         <input
           ref={password}
           type="password"
-          placeholder="Password"
+          placeholder={lang[langKey].passwordPlaceholder}
           className="p-3 my-2 w-full bg-gray-700 rounded-lg"
         ></input>
 
@@ -126,12 +128,11 @@ const Login = () => {
           className="p-3 my-5 bg-red-700 w-full rounded-lg"
           onClick={handleButtonClick}
         >
-          {isSignInForm ? "Sign In" : "Sign Up"}
+          {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
         </button>
         <p className="py-3 cursor-pointer" onClick={toggleSignInForm}>
           {isSignInForm
-            ? "New to Netflix? Sign Up Now."
-            : "Already registered? Sign in Now."}
+            ? lang[langKey].signUpPrompt : lang[langKey].signInPrompt}
         </p>
       </form>
     </div>

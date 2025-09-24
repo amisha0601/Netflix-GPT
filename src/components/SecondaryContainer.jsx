@@ -1,40 +1,49 @@
 import React from "react";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
+import lang from "../utils/languageConstants";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
 
   const tvSeries = useSelector((store) => store.tvSeries);
 
+  const langKey = useSelector((store) => store.config.lang);
+
   return (
     <div className=" bg-black">
       <div className="-mt-60 pl-6 relative z-20">
         <MovieList
-          title={"Now Playing"}
+          title={lang[langKey].nowPlayingMovies}
           movies={movies.nowPlayingMovies || []}
         />
-        <MovieList title={"Popular"} movies={movies.popularMovies || []} />
-        <MovieList title={"Top Rated"} movies={movies.topRatedMovies || []} />
         <MovieList
-          title={"Upcoming Movies"}
+          title={lang[langKey].popularMovies}
+          movies={movies.popularMovies || []}
+        />
+        <MovieList
+          title={lang[langKey].topRatedMovies}
+          movies={movies.topRatedMovies || []}
+        />
+        <MovieList
+          title={lang[langKey].upcomingMovies}
           movies={movies.upcomingMovies || []}
         />
         <MovieList
-          title={"Airing Today Tv Series"}
+          title={lang[langKey].airingTodayTvSeries}
           movies={tvSeries.airingTodayTvSeries || []}
         />
-          <MovieList
-          title={"On The Air Tv Series"}
+        <MovieList
+          title={lang[langKey].onTheAirTvSeries}
           movies={tvSeries.onTheAirTvSeries || []}
         />
         <MovieList
-          title={"Popular Tv Series"}
+          title={lang[langKey].popularTvSeries}
           movies={tvSeries.popularTvSeries || []}
         />
-      
+
         <MovieList
-          title={"Top Rated Tv Series"}
+          title={lang[langKey].topRatedTvSeries}
           movies={tvSeries.topRatedTvSeries || []}
         />
       </div>
