@@ -13,7 +13,7 @@ const lang = {
         signUpPrompt: "New to Netflix? Sign Up Now.",
         signInPrompt: "Already registered? Sign In Now.",
         nowPlayingMovies: "Now Playing Movies",
-        popularMovies: "Popula,r Movies",
+        popularMovies: "Popular Movies",
         topRatedMovies: "Top Rated Movies",
         upcomingMovies: "Upcoming Movies",
         airingTodayTvSeries: "Airing Today TV Series",
