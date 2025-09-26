@@ -8,6 +8,7 @@ import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 import lang from "../utils/languageConstants";
+import { toggleDiscoverMode } from "../utils/discoverSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,10 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
 
+  const handleDiscoverMode = () => {
+    dispatch(toggleDiscoverMode());
+  };
+
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
       <img className="w-44" src={LOGO} alt="logo" />
@@ -79,6 +84,12 @@ const Header = () => {
 
         {user && (
           <>
+            <button
+              className="py-2 px-4 mx-4 my-2 bg-purple-800/70 text-white rounded-lg"
+              onClick={handleDiscoverMode}
+            >
+            {lang[langKey].tailorYourBinge}
+            </button>
             <button
               className="py-2 px-4 mx-4 my-2 bg-blue-900/70 text-white rounded-lg"
               onClick={handleGptSearchClick}

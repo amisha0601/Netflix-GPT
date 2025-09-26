@@ -12,9 +12,12 @@ import usePopularTvSeries from "../hooks/usePopularTvSeries";
 import useAiringTodayTvSeries from "../hooks/useAiringTodayTvSeries";
 import useOnTheAirTvSeries from "../hooks/useOnTheAirTvSeries";
 import useTopRatedTvSeries from "../hooks/useTopRatedTvSeries";
+import TailorYourBinge from "./TailorYourBinge";
+import useGenres from "../hooks/useGenres";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const isDiscoverMode = useSelector((store) => store.discover.isDiscoverMode);
 
   useNowPlayingMovies();
   usePopularMovies();
@@ -24,12 +27,15 @@ const Browse = () => {
   useAiringTodayTvSeries();
   useOnTheAirTvSeries();
   useTopRatedTvSeries();
+  useGenres();
 
   return (
     <div>
       <Header />
       {showGptSearch ? (
         <GptSearch />
+      ) : isDiscoverMode ? (
+        <TailorYourBinge />
       ) : (
         <>
           <MainContainer />
