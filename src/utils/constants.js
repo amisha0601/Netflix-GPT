@@ -9,7 +9,7 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZWU4ZDQ1OGU0NjUzOWMzNTAzZWNjYTdiZjc1NDMyZiIsIm5iZiI6MTc0OTgxMDA1My42MjEsInN1YiI6IjY4NGJmYjg1ZjZlZDExNzg0MjM0M2NhYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l_ln-udzugjvBPbulK26CLY-BHDecVotRh8wdIIOuLE",
+      "Bearer" + import.meta.env.VITE_TMDB_KEY,
   },
 };
 
@@ -44,3 +44,5 @@ for (let year = currentYear; year >= startYear; year--) {
 }
 
 export const YEARS = years;
+
+export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY;

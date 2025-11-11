@@ -17,6 +17,8 @@ const Header = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const langKey = useSelector((store) => store.config.lang);
 
+  const isDiscoverMode = useSelector((store) => store.discover.isDiscoverMode);
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -53,6 +55,9 @@ const Header = () => {
   }, []);
 
   const handleGptSearchClick = () => {
+   if (isDiscoverMode) {
+      dispatch(toggleDiscoverMode());
+    }
     // Toggle GPT Search
     dispatch(toggleGptSearchView());
   };
@@ -62,6 +67,10 @@ const Header = () => {
   };
 
   const handleDiscoverMode = () => {
+    if (showGptSearch) {
+      dispatch(toggleGptSearchView());
+    }
+    // Toggle Discover Mode
     dispatch(toggleDiscoverMode());
   };
 

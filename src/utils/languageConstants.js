@@ -32,6 +32,8 @@ const lang = {
     releaseDate: "Release Date",
     revenue: "Revenue",
     topRated: "Top Rated",
+    gptQuery: "Act as a Movie Recommendation System and suggest some movies for the query: ",
+    clearFilters: "Clear Filters"
   },
   hindi: {
     search: "खोज",
@@ -66,6 +68,8 @@ const lang = {
     releaseDate: "रिलीज़ की तारीख",
     revenue: "राजस्व",
     topRated: "टॉप रेटेड",
+    gptQuery: "एक मूवी सिफ़ारिश प्रणाली के रूप में कार्य करें और इस प्रश्न के लिए कुछ मूवी सुझाएँ: ",
+    clearFilters: "फ़िल्टर हटायें"
   },
   spanish: {
     search: "Buscar",
@@ -100,6 +104,8 @@ const lang = {
     releaseDate: "Fecha de lanzamiento",
     revenue: "Ingresos",
     topRated: "Mejor valoradas",
+    gptQuery: "Actúa como un sistema de recomendación de películas y sugiere algunas películas para la consulta: ",
+    clearFilters: "Borrar filtros",
   },
   fr: {
     search: "Rechercher",
@@ -134,6 +140,8 @@ const lang = {
     releaseDate: "Date de sortie",
     revenue: "Revenus",
     topRated: "Les mieux notés",
+    gptQuery: "Agissez en tant que système de recommandation de films et suggérez des films pour la requête : ",
+    clearFilters: "Effacer les filtres"
   },
   de: {
     search: "Suchen",
@@ -168,6 +176,8 @@ const lang = {
     releaseDate: "Veröffentlichungsdatum",
     revenue: "Einnahmen",
     topRated: "Am besten bewertet",
+    gptQuery: "Handle wie ein Filmempfehlungssystem und schlage einige Filme für die folgende Anfrage vor: ",
+    clearFilters: "Filter löschen"
   },
   it: {
     search: "Cerca",
@@ -202,6 +212,8 @@ const lang = {
     releaseDate: "Data di rilascio",
     revenue: "Ricavi",
     topRated: "I più votati",
+    gptQuery: "Agisci come un sistema di raccomandazione di film e suggerisci alcuni film per la query: ",
+    clearFilters: "Cancella filtri"
   },
 };
 

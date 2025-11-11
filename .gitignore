@@ -33,3 +33,5 @@ storage.rules
 dataconnect/
 dataconnect-generated/
 functions/
+
+.env
