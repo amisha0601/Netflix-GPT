@@ -9,6 +9,8 @@ const useNowPlayingMovies = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+   const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
+
   const getNowPlayingMovies = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/now_playing?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,6 +22,7 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
+    !nowPlayingMovies &&
     getNowPlayingMovies();
   }, [langKey,regionCode]);
 };

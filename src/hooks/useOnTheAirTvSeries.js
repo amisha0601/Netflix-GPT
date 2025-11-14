@@ -11,6 +11,8 @@ const useOnTheAirTvSeries = () => {
     SUPPORTED_LANGUAGES.find((lang) => lang.identifier === langKey)?.region ||
     "US";
 
+  const onTheAirTvSeries = useSelector((store) => store.tvSeries.onTheAirTvSeries);  
+
   const getOnTheAirTvSeries = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/tv/on_the_air?language=${langKey}&region=${regionCode}&page=1`,
@@ -22,6 +24,7 @@ const useOnTheAirTvSeries = () => {
   };
 
   useEffect(() => {
+    !onTheAirTvSeries && 
     getOnTheAirTvSeries();
   }, [langKey, regionCode]);
 };

@@ -9,6 +9,8 @@ const useUpcomingMovies = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+  const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
+
   const getUpcomingMovies = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/upcoming?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,8 +22,9 @@ const useUpcomingMovies = () => {
   };
 
   useEffect(() => {
+    !upcomingMovies && 
     getUpcomingMovies();
   }, [langKey,regionCode]);
 };
 
-export default useUpcomingMovies;
+export default useUpcomingMovies; 

@@ -9,6 +9,8 @@ const useAiringTodayTvSeries = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+  const airingTodayTvSeries = useSelector((store) => store.tvSeries.airingTodayTvSeries);
+
   const getAiringTodayTvSeries = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/tv/airing_today?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,6 +22,7 @@ const useAiringTodayTvSeries = () => {
   };
 
   useEffect(() => {
+    !airingTodayTvSeries &&
     getAiringTodayTvSeries();
   }, [langKey,regionCode]);
 };

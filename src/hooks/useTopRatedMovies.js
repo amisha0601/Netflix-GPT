@@ -9,6 +9,8 @@ const useTopRatedMovies = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+  const topRatedMovies = useSelector((store) => store.movies.topRatedMovies)
+
   const getTopRatedMovies = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,6 +22,7 @@ const useTopRatedMovies = () => {
   };
 
   useEffect(() => {
+    !topRatedMovies && 
     getTopRatedMovies();
   }, [langKey, regionCode]);
 };

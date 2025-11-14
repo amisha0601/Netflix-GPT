@@ -9,6 +9,8 @@ const usePopularMovies = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+  const popularMovies = useSelector((store) => store.movies.popularMovies);
+
   const getPopularMovies = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/popular?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,6 +22,7 @@ const usePopularMovies = () => {
   };
 
   useEffect(() => {
+    !popularMovies &&
     getPopularMovies();
   }, [langKey,regionCode]);
 };

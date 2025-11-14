@@ -9,6 +9,8 @@ const useTopRatedTvSeries = () => {
   const langKey = useSelector((store) => store.config.lang);
   const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
 
+  const topRatedTvSeries = useSelector((store) => store.tvSeries.topRatedTvSeries)
+
   const getTopRatedTvSeries = async () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/tv/top_rated?language=${langKey}&region=${regionCode}&page=1`,
@@ -20,6 +22,7 @@ const useTopRatedTvSeries = () => {
   };
 
   useEffect(() => {
+    !topRatedTvSeries &&
     getTopRatedTvSeries();
   }, [langKey,regionCode]);
 };
