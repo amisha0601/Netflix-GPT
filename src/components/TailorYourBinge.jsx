@@ -4,6 +4,7 @@ import useDiscover from "../hooks/useDiscover";
 import MovieCard from "./MovieCard";
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
+import { Link } from "react-router-dom";
 
 const TailorYourBinge = () => {
   const [sortBy, setSortBy] = useState(SORT_BY_OPTIONS[0].value);
@@ -125,7 +126,9 @@ const TailorYourBinge = () => {
             movies.map(
               (movie) =>
                 movie.poster_path && (
-                  <MovieCard key={movie.id} posterPath={movie.poster_path} />
+                  <Link key={movie.id} to={"/movie/" + movie.id}>
+                    <MovieCard movie={movie} />
+                  </Link>
                 )
             )
           ) : (
