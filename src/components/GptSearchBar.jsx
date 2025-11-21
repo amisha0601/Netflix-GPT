@@ -21,6 +21,8 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
+    if (!searchText.current || !searchText.current.value) return;
+
     setErrorMessage(null);
     console.log(searchText.current.value);
 
@@ -44,9 +46,11 @@ const GptSearchBar = () => {
       const gptMovies = gptResults.choices?.[0]?.message?.content
         .split(",")
         .map((movie) => movie.trim());
+
       const promiseArray = gptMovies.map((movie) =>
         searchMovieTMDB(movie, langKey)
       );
+
       const tmdbResults = await Promise.all(promiseArray);
       console.log(tmdbResults);
 
@@ -64,25 +68,27 @@ const GptSearchBar = () => {
   return (
     <div className="pt-[6%] flex flex-col items-center">
       <form
-        className="w-full md:w-1/2 bg-black grid grid-cols-12"
-        onSubmit={(e) => e.preventDefault()}
+        className="m-4 w-full md:w-1/2 bg-black rounded-2xl grid grid-cols-12"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleGptSearchClick();
+        }}
       >
         <input
           ref={searchText}
           type="text"
-          className="p-4 m-4 col-span-9"
+          className="px-3 py-1 m-4 -mr-2 col-span-9 focus:outline-none focus:ring-2 focus:ring-[#ad0009] rounded-lg"
           placeholder={lang[langKey].gptSearchPlaceholder}
-        ></input>
+        />
         <button
-          className="py-2 px-4 m-4 col-span-3 bg-lime-400 text-white rounded-lg"
-          onClick={handleGptSearchClick}
+          className="p-2 m-4 col-span-3 bg-[#ad0009] hover:bg-[#c40000] text-white rounded-lg"
         >
           {lang[langKey].search}
         </button>
       </form>
 
       {errorMessage && (
-        <div className="w-full md:w-1/2 mt-2 p-2 bg-red-900 bg-opacity-80 text-white text-center rounded-lg">
+        <div className="w-full md:w-1/2 mt-2 p-2 bg-red-700 bg-opacity-80 text-white text-center rounded-lg">
           {errorMessage}
         </div>
       )}

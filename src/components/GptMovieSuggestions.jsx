@@ -11,7 +11,7 @@ const GptMovieSuggestions = () => {
   );
 
   return (
-    <div className="p-4 m-4 bg-black/85 text-white ">
+    <div className="p-6 m-10 bg-black/85 text-white  rounded-2xl">
       <div>
         {successfulResults.map((movies) => {
           const translatedTitle = movies[0].title;

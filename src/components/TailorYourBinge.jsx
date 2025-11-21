@@ -34,11 +34,11 @@ const TailorYourBinge = () => {
     <div className="flex flex-col md:flex-row">
       <div className="fixed top-0 left-0 -z-10 h-screen w-screen">
         <img className="h-full w-full object-cover" src={BG_URL} alt="bg" />
-        <div className="absolute top-0 left-0 h-full w-full bg-black/60"></div>
+        <div className="absolute top-0 left-0 h-full w-full bg-black/80"></div>
       </div>
 
       <aside className="w-full md:fixed md:top-0 md:left-0 md:w-1/4 h-auto md:h-screen pt-20 px-6 pb-6 md:overflow-y-auto bg-black/80 md:shadow-2xl no-scrollbar z-10">
-        <h1 className="text-2xl font-bold mb-5 text-white">
+        <h1 className="text-[28px] font-bold mb-5 text-white">
           {lang[langKey].tailorYourBinge}
         </h1>
 
@@ -109,7 +109,7 @@ const TailorYourBinge = () => {
         <div className="mt-6">
           <button
             onClick={handleClearFilters}
-            className="w-full p-2 bg-gray-600 hover:bg-gray-500 text-white rounded-md transition-colors font-medium text-sm"
+            className="w-full p-2 bg-gray-600 hover:bg-gray-500 text-white rounded-md font-medium text-sm"
           >
             {lang[langKey].clearFilters}
           </button>
@@ -117,11 +117,11 @@ const TailorYourBinge = () => {
       </aside>
 
       <main className="w-full md:w-3/4 md:ml-auto pt-8 md:pt-20 px-4 md:px-8 pb-12">
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-3xl font-bold text-white/95 mb-5">
           {lang[langKey].results}
         </h2>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           {movies && movies.length > 0 ? (
             movies.map(
               (movie) =>
@@ -132,7 +132,7 @@ const TailorYourBinge = () => {
                 )
             )
           ) : (
-            <p className="text-gray-400 col-span-full">
+            <p className="text-gray-300 col-span-full">
               No movies found for the selected filters.
             </p>
           )}

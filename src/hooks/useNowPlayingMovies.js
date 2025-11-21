@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
-import { API_OPTIONS,SUPPORTED_LANGUAGES} from "../utils/constants";
+import { API_OPTIONS, SUPPORTED_LANGUAGES } from "../utils/constants";
 
 const useNowPlayingMovies = () => {
-  //Fetch Data from TMDB API and update store.
   const dispatch = useDispatch();
   const langKey = useSelector((store) => store.config.lang);
-  const regionCode = SUPPORTED_LANGUAGES.find(lang => lang.identifier === langKey)?.region || "US";
-
-   const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
+  const regionCode =
+    SUPPORTED_LANGUAGES.find((lang) => lang.identifier === langKey)?.region ||
+    "US";
 
   const getNowPlayingMovies = async () => {
     const data = await fetch(
@@ -22,9 +21,8 @@ const useNowPlayingMovies = () => {
   };
 
   useEffect(() => {
-    !nowPlayingMovies &&
     getNowPlayingMovies();
-  }, [langKey,regionCode]);
+  }, [langKey, regionCode]);
 };
 
 export default useNowPlayingMovies;

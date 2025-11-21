@@ -30,7 +30,7 @@ const Browse = () => {
   useGenres();
 
   return (
-    <div>
+    <div className="w-screen">
       <Header />
       {showGptSearch ? (
         <GptSearch />

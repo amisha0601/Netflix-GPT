@@ -25,12 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
-} */
+ body {
+  overflow-x: hidden;
+} 
 
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* chrome */

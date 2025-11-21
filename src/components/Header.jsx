@@ -16,76 +16,56 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const langKey = useSelector((store) => store.config.lang);
-
   const isDiscoverMode = useSelector((store) => store.discover.isDiscoverMode);
 
   const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-        navigate("/error");
-      });
+    signOut(auth).catch(() => navigate("/error"));
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        //User is signed in
         const { uid, email, displayName, photoURL } = user;
-        dispatch(
-          addUser({
-            uid: uid,
-            email: email,
-            displayName: displayName,
-            photoURL: photoURL,
-          })
-        );
+        dispatch(addUser({ uid, email, displayName, photoURL }));
         navigate("/browse");
       } else {
-        // User is signed out
         dispatch(removeUser());
         navigate("/");
       }
     });
-    //unsubscribe when component unmounts
     return () => unsubscribe();
   }, []);
 
   const handleGptSearchClick = () => {
-   if (isDiscoverMode) {
-      dispatch(toggleDiscoverMode());
-    }
-    // Toggle GPT Search
+    if (isDiscoverMode) dispatch(toggleDiscoverMode());
     dispatch(toggleGptSearchView());
+  };
+
+  const handleDiscoverMode = () => {
+    if (showGptSearch) dispatch(toggleGptSearchView());
+    dispatch(toggleDiscoverMode());
   };
 
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
 
-  const handleDiscoverMode = () => {
-    if (showGptSearch) {
-      dispatch(toggleGptSearchView());
-    }
-    // Toggle Discover Mode
-    dispatch(toggleDiscoverMode());
-  };
-
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black via-black/60 to-transparent z-20 flex justify-between items-center">
+      <img className="w-44 drop-shadow-lg" src={LOGO} alt="logo" />
 
-      <div className="flex p-2">
+      <div className="flex items-center gap-2">
         <select
-          className="p-2 m-2 bg-gray-900 text-white"
+          className="w-22 p-1.5 bg-[#11151c] text-white border border-white/20 rounded-md text-sm cursor-pointer"
           onChange={handleLanguageChange}
           value={langKey}
         >
           {SUPPORTED_LANGUAGES.map((lang) => (
-            <option key={lang.identifier} value={lang.identifier}>
+            <option
+              key={lang.identifier}
+              value={lang.identifier}
+              className="bg-[#11151c]"
+            >
               {lang.name}
             </option>
           ))}
@@ -94,19 +74,23 @@ const Header = () => {
         {user && (
           <>
             <button
-              className="py-2 px-4 mx-4 my-2 bg-purple-800/70 text-white rounded-lg"
+              className="w-28 py-2 px-3 bg-[#da003a] text-white rounded-md text-sm font-medium hover:bg-[#ff0040] truncate shadow-md"
               onClick={handleDiscoverMode}
             >
-            {lang[langKey].tailorYourBinge}
+              {lang[langKey].tailorYourBinge}
             </button>
+
             <button
-              className="py-2 px-4 mx-4 my-2 bg-blue-900/70 text-white rounded-lg"
+              className="w-28 py-1.5 px-3 bg-[#dddf00] text-neutral-800 rounded-md text-sm font-semibold hover:bg-[#d9ff00] truncate shadow-md border border-purple-600/50"
               onClick={handleGptSearchClick}
             >
               {showGptSearch ? lang[langKey].homePage : lang[langKey].gptSearch}
             </button>
-            <img className="w-12 h-12" alt="usericon" src={user?.photoURL} />
-            <button onClick={handleSignOut} className="font-bold text-white">
+
+            <button
+              onClick={handleSignOut}
+              className="w-20 p-1.5 bg-[#003f88] text-white rounded-md text-sm font-medium hover:bg-[#19598a] truncate shadow-md"
+            >
               {lang[langKey].signOut}
             </button>
           </>

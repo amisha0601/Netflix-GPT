@@ -95,7 +95,7 @@ const Login = () => {
 
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 absolute p-12 bg-black/80 my-36 mx-auto right-0 left-0 text-white rounded-lg"
+        className="w-3/12 absolute p-9 bg-black/90 my-36 mx-auto right-0 left-0 text-white rounded-lg"
       >
         <h1 className="font-bold text-3xl py-6">
           {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
@@ -105,27 +105,27 @@ const Login = () => {
             ref={yourName}
             type="text"
             placeholder=" Full Name"
-            className="p-3 my-2 w-full bg-gray-700 rounded-lg"
+            className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
           ></input>
         )}
         <input
           ref={email}
           type="text"
           placeholder={lang[langKey].emailPlaceholder}
-          className="p-3 my-2 w-full bg-gray-700 rounded-lg"
+          className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
         ></input>
 
         <input
           ref={password}
           type="password"
           placeholder={lang[langKey].passwordPlaceholder}
-          className="p-3 my-2 w-full bg-gray-700 rounded-lg"
+          className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
         ></input>
 
         <p className="text-red-600 p-2">{errorMessage}</p>
 
         <button
-          className="p-3 my-5 bg-red-700 w-full rounded-lg"
+          className="p-2 my-5 bg-red-600 hover:bg-red-700 w-full rounded-lg"
           onClick={handleButtonClick}
         >
           {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
