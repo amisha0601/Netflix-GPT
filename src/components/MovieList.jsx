@@ -17,8 +17,8 @@ const MovieList = ({ title, movies = [], mediaType }) => {
   if (filteredMovies.length === 0) return null;
 
   return (
-    <div className="px-6 group/list relative text-white">
-      <h1 className="text-2xl pt-5 pb-2.5">{title}</h1>
+    <div className="px-3 sm:px-4 md:px-6 group/list relative text-white">
+      <h1 className="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5 pb-2">{title}</h1>
 
       <div className="relative flex items-center">
         <ChevronLeftIcon
@@ -36,9 +36,9 @@ const MovieList = ({ title, movies = [], mediaType }) => {
 
         <div
           ref={sliderRef}
-          className="flex overflow-x-scroll no-scrollbar scroll-smooth"
+          className="flex overflow-x-scroll no-scrollbar scroll-smooth w-full"
         >
-          <div className="flex gap-4">
+          <div className="flex gap-2 sm:gap-3 md:gap-4">
             {filteredMovies?.map((movie) => (
               <div key={movie.id} className="flex-shrink-0">
                 <MovieCard movie={movie} mediaType={mediaType} />

@@ -32,13 +32,13 @@ const TailorYourBinge = () => {
 
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="fixed top-0 left-0 -z-10 h-screen w-screen">
+      <div className="fixed top-0 left-0 z-0 h-screen w-screen">
         <img className="h-full w-full object-cover" src={BG_URL} alt="bg" />
         <div className="absolute top-0 left-0 h-full w-full bg-black/80"></div>
       </div>
 
-      <aside className="w-full md:fixed md:top-0 md:left-0 md:w-1/4 h-auto md:h-screen pt-20 px-6 pb-6 md:overflow-y-auto bg-black/80 md:shadow-2xl no-scrollbar z-10">
-        <h1 className="text-[28px] font-bold mb-5 text-white">
+      <aside className="w-full md:fixed md:top-0 md:left-0 md:w-1/4 h-auto md:h-screen pt-16 sm:pt-20 px-3 sm:px-4 md:px-6 pb-4 sm:pb-6 md:overflow-y-auto sm:-mt-12 bg-black/80 md:shadow-2xl no-scrollbar z-10">
+        <h1 className="text-2xl mt-6 sm:text-[28px] font-bold mb-4 sm:mb-5 sm:mt-10 text-white">
           {lang[langKey].tailorYourBinge}
         </h1>
 

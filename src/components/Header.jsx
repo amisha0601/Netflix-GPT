@@ -51,12 +51,12 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black via-black/60 to-transparent z-20 flex justify-between items-center">
-      <img className="w-44 drop-shadow-lg" src={LOGO} alt="logo" />
+    <div className="absolute w-full px-2 sm:px-4 py-2 bg-gradient-to-b from-black via-black/60 to-transparent z-20 flex flex-wrap justify-between items-center">
+      <img className="w-24 sm:w-32 md:w-44 drop-shadow-lg" src={LOGO} alt="logo" />
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-center md:justify-end gap-1 sm:gap-2 mt-2 md:mt-0 w-full md:w-auto">
         <select
-          className="w-22 p-1.5 bg-[#11151c] text-white border border-white/20 rounded-md text-sm cursor-pointer"
+          className="px-1.5 sm:px-2 py-1 sm:py-1.5 text-xs sm:text-sm bg-[#11151c] text-white border border-white/20 rounded-md cursor-pointer"
           onChange={handleLanguageChange}
           value={langKey}
         >
@@ -74,22 +74,24 @@ const Header = () => {
         {user && (
           <>
             <button
-              className="w-28 py-2 px-3 bg-[#da003a] text-white rounded-md text-sm font-medium hover:bg-[#ff0040] truncate shadow-md"
+              className="px-2 sm:px-3 py-1 sm:py-2 bg-[#da003a] text-white rounded-md text-xs sm:text-sm font-medium hover:bg-[#ff0040] truncate shadow-md"
               onClick={handleDiscoverMode}
             >
-              {lang[langKey].tailorYourBinge}
+              <span className="hidden sm:inline">{lang[langKey].tailorYourBinge}</span>
+              <span className="sm:hidden">Discover</span>
             </button>
 
             <button
-              className="w-28 py-1.5 px-3 bg-[#dddf00] text-neutral-800 rounded-md text-sm font-semibold hover:bg-[#d9ff00] truncate shadow-md border border-purple-600/50"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 bg-[#dddf00] text-neutral-800 rounded-md text-xs sm:text-sm font-semibold hover:bg-[#d9ff00] truncate shadow-md border border-purple-600/50"
               onClick={handleGptSearchClick}
             >
-              {showGptSearch ? lang[langKey].homePage : lang[langKey].gptSearch}
+              <span className="hidden sm:inline">{showGptSearch ? lang[langKey].homePage : lang[langKey].gptSearch}</span>
+              <span className="sm:hidden">GPT</span>
             </button>
 
             <button
               onClick={handleSignOut}
-              className="w-20 p-1.5 bg-[#003f88] text-white rounded-md text-sm font-medium hover:bg-[#19598a] truncate shadow-md"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 bg-[#003f88] text-white rounded-md text-xs sm:text-sm font-medium hover:bg-[#19598a] truncate shadow-md"
             >
               {lang[langKey].signOut}
             </button>

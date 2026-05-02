@@ -66,26 +66,26 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[6%] flex flex-col items-center">
-      <form
-        className="m-4 w-full md:w-1/2 bg-black rounded-2xl grid grid-cols-12"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleGptSearchClick();
-        }}
-      >
-        <input
-          ref={searchText}
-          type="text"
-          className="px-3 py-1 m-4 -mr-2 col-span-9 focus:outline-none focus:ring-2 focus:ring-[#ad0009] rounded-lg"
-          placeholder={lang[langKey].gptSearchPlaceholder}
-        />
-        <button
-          className="p-2 m-4 col-span-3 bg-[#ad0009] hover:bg-[#c40000] text-white rounded-lg"
-        >
-          {lang[langKey].search}
-        </button>
-      </form>
+    <div className=" pt-[6%] flex flex-col items-center ">
+     <form
+  className="m-4 w-full md:w-3/4 lg:w-1/2 bg-black rounded-2xl flex flex-col md:grid md:grid-cols-12 gap-2"
+  onSubmit={(e) => {
+    e.preventDefault();
+    handleGptSearchClick();
+  }}
+>
+  <input
+    ref={searchText}
+    type="text"
+    className="px-3 py-2 m-2 md:col-span-9 focus:outline-none focus:ring-2 focus:ring-[#ad0009] rounded-lg"
+    placeholder={lang[langKey].gptSearchPlaceholder}
+  />
+  <button
+    className="p-2 m-2 md:col-span-3 bg-[#ad0009] hover:bg-[#c40000] text-white rounded-lg"
+  >
+    {lang[langKey].search}
+  </button>
+</form>
 
       {errorMessage && (
         <div className="w-full md:w-1/2 mt-2 p-2 bg-red-700 bg-opacity-80 text-white text-center rounded-lg">

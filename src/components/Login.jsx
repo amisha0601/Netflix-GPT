@@ -86,16 +86,18 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
+      <div className="absolute inset-0 -z-10">
         <img
           src={BG_URL}
           alt="bg"
+           className="w-full h-full object-cover"
         />
       </div>
 
+      <div className="absolute inset-0 flex items-center justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 absolute p-9 bg-black/90 my-36 mx-auto right-0 left-0 text-white rounded-lg"
+        className="w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12 p-6 sm:p-8 bg-black/90 text-white rounded-lg"
       >
         <h1 className="font-bold text-3xl py-6">
           {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
@@ -105,27 +107,27 @@ const Login = () => {
             ref={yourName}
             type="text"
             placeholder=" Full Name"
-            className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
+            className="p-2 my-2 w-full bg-[#16131b] rounded-lg text-sm sm:text-base"
           ></input>
         )}
         <input
           ref={email}
           type="text"
           placeholder={lang[langKey].emailPlaceholder}
-          className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
+          className="p-2 my-2 w-full bg-[#16131b] rounded-lg text-sm sm:text-base"
         ></input>
 
         <input
           ref={password}
           type="password"
           placeholder={lang[langKey].passwordPlaceholder}
-          className="p-2 my-2 w-full bg-[#16131b] rounded-lg"
+          className="p-2 my-2 w-full bg-[#16131b] rounded-lg text-sm sm:text-base"
         ></input>
 
         <p className="text-red-600 p-2">{errorMessage}</p>
 
         <button
-          className="p-2 my-5 bg-red-600 hover:bg-red-700 w-full rounded-lg"
+          className="p-2 my-5 bg-red-600 hover:bg-red-700 w-full rounded-lg text-sm sm:text-base font-semibold"
           onClick={handleButtonClick}
         >
           {isSignInForm ? lang[langKey].signIn : lang[langKey].signUp}
@@ -135,6 +137,7 @@ const Login = () => {
             ? lang[langKey].signUpPrompt : lang[langKey].signInPrompt}
         </p>
       </form>
+      </div>
     </div>
   );
 };

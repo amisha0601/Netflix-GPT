@@ -15,7 +15,7 @@ const MainContainer = () => {
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="relative  overflow-hidden ">
+    <div className="relative overflow-hidden">
       <VideoTitle title={original_title} overview={overview} movieId={id}/>
       <VideoBackground movieId={id} />
     </div>
